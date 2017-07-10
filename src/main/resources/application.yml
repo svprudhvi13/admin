@@ -1,0 +1,8 @@
+security:
+ oauth2:
+  client:
+   clientId: brewcode
+   clientSecret: password
+   scope: read, write, admin
+   accessTokenUri: http://localhost:8080/brewcode/oauth/token
+   grantType: client_credentials

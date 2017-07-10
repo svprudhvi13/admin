@@ -2,11 +2,14 @@ package in.brewcode.admin.dto;
 
 import java.util.Date;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
+@ManagedBean(name="authorRegistration", eager=true)
 public class AuthorRegistrationDto {
 	@Override
 	public String toString() {
@@ -19,9 +22,10 @@ public class AuthorRegistrationDto {
 
 	@NotNull
 	private String adminFirstName;
+	
 	@NotNull
-	private String adminLastName;
-	@NotNull
+		private String adminLastName;
+	//@NotNull
 	@org.codehaus.jackson.annotate.JsonIgnore
 	private Date adminDateOfBirth;
 	
@@ -29,6 +33,7 @@ public class AuthorRegistrationDto {
 	@org.codehaus.jackson.annotate.JsonIgnore
 	private Date adminCreatedDate;
 	
+	@NotNull
 	private String address;
 	
 	public String getAddress() {
@@ -39,7 +44,9 @@ public class AuthorRegistrationDto {
 		this.address = address;
 	}
 	
+	@ManagedProperty("#{authorLogin}")
 	private AuthorLoginDto authorLoginDto;
+	
 	@NotNull
 	private String confirmPassword;
 

@@ -1,5 +1,6 @@
 package in.brewcode.admin.dto;
 
+import javax.faces.bean.ManagedProperty;
 import javax.validation.constraints.NotNull;
 
 public class AuthorDto {
@@ -10,8 +11,12 @@ public class AuthorDto {
 				+ authorEmail + "]";
 	}
 
+	@NotNull
+	@ManagedProperty("#{username}")
 	private String authorUserName;
 
+	@NotNull
+	@ManagedProperty("#{email}")
 	private String authorEmail;
 
 	@NotNull

@@ -15,7 +15,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.3.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
@@ -29,17 +29,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-	<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-api -->
-<dependency>
-    <groupId>com.sun.faces</groupId>
-    <artifactId>jsf-api</artifactId>
-    <version>2.2.14</version>
-</dependency>
-<dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-impl</artifactId>
-            <version>2.2.14</version>
-        </dependency>
+		<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-api -->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.2.14</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.2.14</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -66,6 +66,27 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2 -->
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
 	</dependencies>
 
 	<build>

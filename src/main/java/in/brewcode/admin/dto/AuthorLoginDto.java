@@ -1,7 +1,10 @@
 package in.brewcode.admin.dto;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.validation.constraints.NotNull;
 
+@ManagedBean(name="authorLogin", eager=true)
 public class AuthorLoginDto {
 	@Override
 	public String toString() {
@@ -13,10 +16,13 @@ public class AuthorLoginDto {
 	 * This field encapsulates username and email
 	 */
 	@NotNull
+	@ManagedProperty("#{author}")
 	private AuthorDto authorDto;
 	@NotNull
+	@ManagedProperty("#{password}")
 	private String adminPassword;
-	
+
+	@ManagedProperty("#{mobileNumber}")
 	private String authorMobileNumber;
 	@NotNull
 	//@JsonIgnore

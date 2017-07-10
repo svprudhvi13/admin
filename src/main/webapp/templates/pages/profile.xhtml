@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<!-- <h:messages/>
+ -->
+					<h:form id="f" styleClass="form registrationform">
+						<h:outputLabel styleClass="h3">Profile</h:outputLabel>
+						<fieldset class="form-group">
+
+							<h:outputLabel value="First Name"></h:outputLabel>
+
+							<h:inputText styleClass="form-control" id="firstName"
+								label="firstName"
+								value="#{registrationBean.authorRegistration.firstName}"
+								required="true"></h:inputText>
+							<h:message for="firstName"></h:message>
+
+
+						</fieldset>
+						<br />
+						<fieldset class="form-group">
+
+							<h:outputLabel value="Last Name"></h:outputLabel>
+
+							<h:inputText styleClass="form-control" id="lastName"
+								label="lastName"
+								value="#{registrationBean.authorRegistration.lastName}"
+								required="true"></h:inputText>
+							<h:message for="lastName"></h:message>
+						</fieldset>
+						<br />
+
+						<fieldset class="form-group">
+							<h:outputLabel value="username"></h:outputLabel>
+							<h:inputSecret styleClass="form-control" id="username"
+								value="#{registrationBean.authorRegistration.authorLogin.author.username}"
+								label="username" required="true"
+								requiredMessage="Please enter your username"></h:inputSecret>
+							<h:message for="username"></h:message>
+						</fieldset>
+						<br />
+
+						<fieldset class="form-group">
+							<h:outputLabel value="email"></h:outputLabel>
+							<h:inputSecret styleClass="form-control" id="email"
+								value="#{registrationBean.authorRegistration.authorLogin.author.email}"
+								label="email" required="true"
+								requiredMessage="Please enter your email"></h:inputSecret>
+							<h:message for="email"></h:message>
+						</fieldset>
+						<br />
+
+
+
+						<fieldset class="form-group">
+
+							<h:outputLabel value="Date Of Birth"></h:outputLabel>
+
+							<h:inputText styleClass="form-control" id="dateOfBirth"
+								label="dateOfBirth"
+								value="#{registrationBean.authorRegistration.dateOfBirth}"
+								required="true"></h:inputText>
+							<h:message for="dateOfBirth"></h:message>
+						</fieldset>
+						<br />
+
+
+
+						<fieldset class="form-group">
+							<h:outputLabel value="Password"></h:outputLabel>
+							<h:inputSecret styleClass="form-control" id="password"
+								value="#{registrationBean.authorRegistration.authorLogin.password}"
+								label="password" required="true"
+								requiredMessage="Please enter your password"></h:inputSecret>
+							<h:message for="password"></h:message>
+						</fieldset>
+						<br />
+
+						<fieldset class="form-group">
+							<h:outputLabel value="Confirm Password"></h:outputLabel>
+							<h:inputSecret styleClass="form-control" id="confirmPassword"
+								value="#{registrationBean.authorRegistration.confirmPassword}"
+								label="password" required="true"
+								requiredMessage="Please enter your password"></h:inputSecret>
+							<h:message for="confirmPassword"></h:message>
+						</fieldset>
+						<br />
+
+						<fieldset class="form-group">
+							<h:outputLabel value="Mobile Number"></h:outputLabel>
+							<h:inputSecret styleClass="form-control" id="mobileNumber"
+								value="#{registrationBean.authorRegistration.authorLogin.mobileNumber}"
+								label="mobileNumber" required="true"
+								requiredMessage="Please enter your mobileNumber"></h:inputSecret>
+							<h:message for="mobileNumber"></h:message>
+						</fieldset>
+						<br />
+
+
+						<fieldset class="form-group">
+
+							<h:outputLabel value="Address"></h:outputLabel>
+
+							<h:inputText styleClass="form-control" id="address"
+								label="address"
+								value="#{registrationBean.authorRegistration.address}"
+								required="true"></h:inputText>
+							<h:message for="address"></h:message>
+						</fieldset>
+						<br />
+
+
+
+						<h:commandButton styleClass="btn btn-default" value="Register"
+							action="#{registrationBean.update()}"></h:commandButton>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</ui:composition>
+</h:body>
+</html>
