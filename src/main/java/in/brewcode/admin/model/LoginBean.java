@@ -8,42 +8,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.security.auth.login.LoginException;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestClientException;
 
 //Using CDI annotation instead of JSF annotation for maintainence in future
-@Component
-@ManagedBean(name="loginBean", eager=true)
-@RequestScoped
+//@ManagedBean(value="loginBean")
+//@ViewScoped
+@Controller
 public class LoginBean {
-	
-	private static Logger logger = Logger.getLogger(LoginBean.class);
-	private String username;
-	private String password;
-	
 
-@ManagedProperty("#{headerNavigationBean}")
-@Autowired
-public HeaderNavigationBean headerNavigationBean;
-public HeaderNavigationBean getHeaderNavigationBean() {
-	return headerNavigationBean;
-}
-public void setHeaderNavigationBean(HeaderNavigationBean headerNavigationBean) {
-	this.headerNavigationBean = headerNavigationBean;
-}
+	private static Logger logger = Logger.getLogger(LoginBean.class);
+	private String username;;
+	private String password;
+
+	@Autowired
+	public HeaderNavigationBean headerNavigationBean;
+
 	@Autowired
 	private ILoginService loginService;
+
+
 	public LoginBean() {
 	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -59,11 +52,11 @@ public void setHeaderNavigationBean(HeaderNavigationBean headerNavigationBean) {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String login() throws RestClientException, URISyntaxException,
 			LoginException {
 
 		AuthorRegistrationDto author = loginService.login(username, password);
-
 		if (author != null) {
 
 			OAuth2AccessToken accessToken = loginService.getoAuth2AccessToken();
@@ -83,10 +76,12 @@ public void setHeaderNavigationBean(HeaderNavigationBean headerNavigationBean) {
 	}
 
 	public String logout() {
-		loginService.logout();
-
+		// loginService.logout();
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
+				.remove("author");
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
+				.remove("accessToken");
 		return "index";
 	}
 
-	 
 }

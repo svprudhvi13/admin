@@ -1,5 +1,13 @@
 package in.brewcode.admin;
 
+import in.brewcode.admin.dto.AuthorDto;
+import in.brewcode.admin.dto.AuthorLoginDto;
+import in.brewcode.admin.dto.AuthorRegistrationDto;
+import in.brewcode.admin.model.HeaderNavigationBean;
+import in.brewcode.admin.model.LoginBean;
+import in.brewcode.admin.model.RegistrationBean;
+
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -43,7 +51,7 @@ public class JSFServletRegistrationBean extends ServletRegistrationBean {
 
 		Set<Class<?>> classes = new HashSet<Class<?>>();
 		classes.add(JSFConfig.class);
-		
+	classes.addAll(Arrays.asList(AuthorRegistrationDto.class, AuthorDto.class, AuthorLoginDto.class, LoginBean.class, RegistrationBean.class, HeaderNavigationBean.class));
 		facesInitializer.onStartup(classes, servletContext);
 		
 		this.addUrlMappings(URL_MAPPINGS);

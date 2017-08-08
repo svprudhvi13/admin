@@ -1,6 +1,5 @@
 package in.brewcode.admin.service.impl;
 
-import in.brewcode.admin.dto.AuthorDto;
 import in.brewcode.admin.dto.AuthorRegistrationDto;
 import in.brewcode.admin.service.ILoginService;
 
@@ -11,6 +10,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.token.AccessTokenProvider;
@@ -25,7 +25,9 @@ import org.springframework.web.client.RestClientException;
 public class LoginServiceImpl implements ILoginService {
 
 	private static final Logger LOG = Logger.getLogger(LoginServiceImpl.class);
-
+	
+	@Autowired
+	private Environment env;
 	@Autowired
 	private OAuth2RestTemplate oAuth2RestTemplate;
 
@@ -47,7 +49,7 @@ public class LoginServiceImpl implements ILoginService {
 				+ oAuth2RestTemplate.getAccessToken().toString());
 		DefaultAccessTokenRequest accessTokenRequest = new DefaultAccessTokenRequest();
 		accessTokenRequest
-				.setCurrentUri("http://localhost:8080/brewcode/oauth/token");
+				.setCurrentUri(env.getProperty("security.oauth2.client.accessTokenUri"));//,"http://localhost:8080/oauth/token");
 		accessTokenRequest.setAll(map);
 		accessTokenProvider = new ResourceOwnerPasswordAccessTokenProvider();
 		oAuth2AccessToken = accessTokenProvider.obtainAccessToken(
@@ -58,7 +60,7 @@ public class LoginServiceImpl implements ILoginService {
 				oAuth2AccessToken);
 		LOG.info("UserToken: " + oAuth2RestTemplate.getAccessToken().toString());
 		ResponseEntity<AuthorRegistrationDto> author = (ResponseEntity<AuthorRegistrationDto>) oAuth2RestTemplate
-				.getForEntity(new URI("http://localhost:8080/brewcode/user/"
+				.getForEntity(new URI("http://localhost:8080/user/"
 						+ username), AuthorRegistrationDto.class);
 		AuthorRegistrationDto authorDto = author.getBody();
 		return authorDto;

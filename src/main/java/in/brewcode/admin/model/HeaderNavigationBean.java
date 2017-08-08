@@ -1,14 +1,13 @@
 package in.brewcode.admin.model;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-
 import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+//@ManagedBean(name="headerNavigationBean", eager=true)
+//@SessionScoped
 @Component
-@ManagedBean(name="headerNavigationBean", eager=true)
-@SessionScoped
+@Scope
 public class HeaderNavigationBean {
 
 	
